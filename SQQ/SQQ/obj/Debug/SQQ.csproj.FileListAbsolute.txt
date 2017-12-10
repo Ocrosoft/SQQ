@@ -1,0 +1,12 @@
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\SQQ.dll.config
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\SQQ.dll
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\SQQ.pdb
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\MySql.Data.dll
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\Newtonsoft.Json.dll
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\qazws\source\repos\SQQ\SQQ\obj\Debug\SQQ.csproj.CoreCompileInputs.cache
+C:\Users\qazws\source\repos\SQQ\SQQ\obj\Debug\SQQ.dll
+C:\Users\qazws\source\repos\SQQ\SQQ\obj\Debug\SQQ.pdb
+C:\Users\qazws\source\repos\SQQ\SQQ\obj\Debug\SQQ.csprojResolveAssemblyReference.cache
+C:\Users\qazws\source\repos\SQQ\SQQ\bin\DispatchAlgorithm.dll

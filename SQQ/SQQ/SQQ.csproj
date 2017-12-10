@@ -1,0 +1,288 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C16BEFA0-25B7-44A0-93A6-7C7E3CD48B1F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQQ</RootNamespace>
+    <AssemblyName>SQQ</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DispatchAlgorithm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\DispatchAlgorithm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=5.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ajax\checkTasks.ashx" />
+    <Content Include="ajax\confirmTask.ashx" />
+    <Content Include="ajax\deleteSender.ashx" />
+    <Content Include="ajax\dispatch.ashx" />
+    <Content Include="ajax\getContestID.ashx" />
+    <Content Include="ajax\getDispatch.ashx" />
+    <Content Include="ajax\getLogs.ashx" />
+    <Content Include="ajax\getMaxTask.ashx" />
+    <Content Include="ajax\getSign.ashx" />
+    <Content Include="ajax\initation.ashx" />
+    <Content Include="ajax\newTask.ashx" />
+    <Content Include="ajax\problemsCountInfo.ashx" />
+    <Content Include="ajax\problemsSavedCount.ashx" />
+    <Content Include="ajax\problemsSolved.ashx" />
+    <Content Include="ajax\processProblems.ashx" />
+    <Content Include="ajax\resendTask.ashx" />
+    <Content Include="ajax\senders.ashx" />
+    <Content Include="ajax\sents.ashx" />
+    <Content Include="ajax\setContestID.ashx" />
+    <Content Include="ajax\setMaxTask.ashx" />
+    <Content Include="ajax\switchDispatch.ashx" />
+    <Content Include="ajax\switchSign.ashx" />
+    <Content Include="ajax\sendMessage.ashx" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\local.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\weui.min.css" />
+    <Content Include="DispatchAlgorithm.dll" />
+    <Content Include="Index.aspx" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="MySql.Data.dll" />
+    <Content Include="Newtonsoft.Json.dll" />
+    <Content Include="ReportBack.aspx" />
+    <Content Include="SendMessage.aspx" />
+    <Content Include="ShowSender.aspx" />
+    <Content Include="ShowSent.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ajax\checkTasks.ashx.cs">
+      <DependentUpon>checkTasks.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\confirmTask.ashx.cs">
+      <DependentUpon>confirmTask.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\deleteSender.ashx.cs">
+      <DependentUpon>deleteSender.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\dispatch.ashx.cs">
+      <DependentUpon>dispatch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getContestID.ashx.cs">
+      <DependentUpon>getContestID.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getDispatch.ashx.cs">
+      <DependentUpon>getDispatch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getLogs.ashx.cs">
+      <DependentUpon>getLogs.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getMaxTask.ashx.cs">
+      <DependentUpon>getMaxTask.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getSign.ashx.cs">
+      <DependentUpon>getSign.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\initation.ashx.cs">
+      <DependentUpon>initation.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\newTask.ashx.cs">
+      <DependentUpon>newTask.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\problemsCountInfo.ashx.cs">
+      <DependentUpon>problemsCountInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\problemsSavedCount.ashx.cs">
+      <DependentUpon>problemsSavedCount.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\problemsSolved.ashx.cs">
+      <DependentUpon>problemsSolved.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\processProblems.ashx.cs">
+      <DependentUpon>processProblems.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\resendTask.ashx.cs">
+      <DependentUpon>resendTask.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\senders.ashx.cs">
+      <DependentUpon>senders.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\sendMessage.ashx.cs">
+      <DependentUpon>sendMessage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\sents.ashx.cs">
+      <DependentUpon>sents.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\setContestID.ashx.cs">
+      <DependentUpon>setContestID.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\setMaxTask.ashx.cs">
+      <DependentUpon>setMaxTask.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\switchDispatch.ashx.cs">
+      <DependentUpon>switchDispatch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\switchSign.ashx.cs">
+      <DependentUpon>switchSign.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="ORequest.cs" />
+    <Compile Include="OSecurity.cs" />
+    <Compile Include="SendMessage.aspx.cs">
+      <DependentUpon>SendMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendMessage.aspx.designer.cs">
+      <DependentUpon>SendMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShellDispatch.cs" />
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MySQLHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportBack.aspx.cs">
+      <DependentUpon>ReportBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportBack.aspx.designer.cs">
+      <DependentUpon>ReportBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSender.aspx.cs">
+      <DependentUpon>ShowSender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowSender.aspx.designer.cs">
+      <DependentUpon>ShowSender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSent.aspx.cs">
+      <DependentUpon>ShowSent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowSent.aspx.designer.cs">
+      <DependentUpon>ShowSent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sys.cs" />
+    <Compile Include="WXManage.cs" />
+    <Compile Include="WXRequest.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52342</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52342/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
