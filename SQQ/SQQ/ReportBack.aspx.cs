@@ -28,7 +28,7 @@ namespace SQQ
                     tbody.InnerHtml += "<tr align=\"center\" class=\"" + (rowIndex++ % 2 == 0 ? "evenrow" : "oddrow") + "\">";
                     tbody.InnerHtml += "<td>" + taskSender.name + "</td>";
                     tbody.InnerHtml += "<td>" + sents[i].team_id + " - " + (char)(sents[i].num + 'A') + "</td>";
-                    tbody.InnerHtml += "<td>" + sents[i].time.ToString("HH:mm:ss") + "</td>";
+                    tbody.InnerHtml += "<td>" + sents[i].timeSent.ToString("HH:mm:ss") + "</td>";
                     tbody.InnerHtml += "</tr>";
                 }
             }

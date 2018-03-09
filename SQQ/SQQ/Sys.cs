@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -7,51 +8,81 @@ namespace SQQ
 {
     public class Sys
     {
+        static Sys()
+        {
+            var settings = Database.GetSettings();
+            DispatchEnabled = settings.dispatchEnabled;
+            SignEnabled = settings.signEnabled;
+            ContestID = settings.contestId;
+            ProcessingProblems = settings.processingProblems;
+            Dispatching = settings.dispatching;
+            Checking = settings.checking;
+            MaxTask = settings.maxTask;
+            floorList = Database.GetsFloor();
+            var colorList = Database.GetsColor();
+            foreach(var color in colorList)
+            {
+                colorMap.Add("")
+            }
+        }
         public static void Reset()
         {
-            DispatchEnabled = false;
-            SignEnabled = false;
-            ContestID = 0;
-            ProcessingProblems = false;
-            Dispatching = false;
-            Checking = false;
-            MaxTask = 1;
+            Database.SetSettings(new Database.Settings());
+            var settings = Database.GetSettings();
+            DispatchEnabled = settings.dispatchEnabled;
+            SignEnabled = settings.signEnabled;
+            ContestID = settings.contestId;
+            ProcessingProblems = settings.processingProblems;
+            Dispatching = settings.dispatching;
+            Checking = settings.checking;
+            MaxTask = settings.maxTask;
+            floorList = Database.GetsFloor();
+            colorMap.Clear();
+        }
+
+        public static void SaveSettings()
+        {
+            Database.SetSettings(new Database.Settings()
+            {
+                dispatchEnabled = DispatchEnabled,
+                signEnabled = SignEnabled,
+                contestId = ContestID,
+                maxTask = MaxTask
+            });
         }
         /// <summary>
-        /// If auto dispatch is enabled.
+        /// 分配是否开启
         /// </summary>
         public static bool DispatchEnabled { get; set; }
         /// <summary>
-        /// If allow sender sign to system.
+        /// 注册是否开启
         /// </summary>
         public static bool SignEnabled { get; set; }
         /// <summary>
-        /// Which contest system should process.
+        /// 比赛ID
         /// </summary>
         public static int ContestID { get; set; }
         /// <summary>
-        /// If a sender whose sending task is equal to this, should not dispatch new task to him.
+        /// 最大配送中数量
         /// </summary>
         public static int MaxTask { get; set; }
         /// <summary>
-        /// If system is processing problems.
+        /// 是否正在处理题目
         /// Should not add new solved problems to datanase if this is true.
         /// </summary>
         public static bool ProcessingProblems { get; set; }
         /// <summary>
-        /// If system is dispatching tasks.
-        /// Should not dispatch new task to senders if this is true.
+        /// 是否正在进行分配任务
         /// </summary>
         public static bool Dispatching { get; set; }
         /// <summary>
-        /// If system is checking tasks.
-        /// Should not check tasks if this is true.
+        /// 是否正在验证配送任务超时
         /// </summary>
         public static bool Checking { get; set; }
         /// <summary>
-        /// Print log.
+        /// 打印日志
         /// </summary>
-        /// <param name="content">Infomation.</param>
+        /// <param name="content">日志内容</param>
         public static void Log(string content)
         {
             string logFilePath = AppDomain.CurrentDomain.BaseDirectory + '\\' + DateTime.Now.ToString("yyyy-MM-dd") + ".log";
@@ -65,9 +96,9 @@ namespace SQQ
             fs.Close();
         }
         /// <summary>
-        /// Print error log.
+        /// 打印错误日志
         /// </summary>
-        /// <param name="content">Error infomation.</param>
+        /// <param name="content">错误信息</param>
         public static void Error(string content)
         {
             string errFilePath = AppDomain.CurrentDomain.BaseDirectory + '\\' + DateTime.Now.ToString("yyyy-MM-dd") + ".err";
@@ -81,7 +112,7 @@ namespace SQQ
             fs.Close();
         }
         /// <summary>
-        /// Clear today's log.
+        /// 清除所有日志
         /// </summary>
         public static void ClearLogs()
         {
@@ -105,7 +136,7 @@ namespace SQQ
             fs.Close();
         }
         /// <summary>
-        /// Get today's log.
+        /// 获取今天的日志
         /// </summary>
         /// <returns></returns>
         public static List<string> GetLog()
@@ -125,5 +156,13 @@ namespace SQQ
             sr.Close();
             return ret;
         }
+        /// <summary>
+        /// 楼层/考场列表
+        /// </summary>
+        public static List<Database.Floor> floorList;
+        /// <summary>
+        /// 气球颜色表
+        /// </summary>
+        public static Hashtable colorMap = new Hashtable();
     }
 }

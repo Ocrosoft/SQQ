@@ -12,30 +12,30 @@ namespace SQQ
             /* 简单调度算法 */ /* 在此处实现自己的分配算法即可 */
             senders.Sort(delegate (Sender left, Sender right)
             {
-                // left is full task, but right not, so right first.
+                // left正在配送数量已经最多，right没有
                 if (left.sending == maxTask && right.sending != maxTask)
                 {
-                    return 1; // positive, right first.
+                    return 1; // 返回正数，right优先
                 }
-                // right is full task, but left not, so left first.
+                // right正在配送数量已经最多，left没有
                 else if (left.sending != maxTask && right.sending == maxTask)
                 {
-                    return -1; // negative, left first.
+                    return -1; // 返回负数，left优先
                 }
-                // sender who send slower first(rate smaller first).
+                // 比较小的优先
                 else
                 {
-                    return (right.sendCost / right.sent).CompareTo(left.sendCost / left.sent);
+                    return right.sent.CompareTo(left.sent);
                 }
             });
             var dispatchCount = Math.Min(problemsNeedSend.Count, senders.Count);
             for (int i = 0; i < dispatchCount; i++)
             {
-                // this task will dispatch to this sender.
+                // task分配给sender
                 var task = problemsNeedSend[i];
                 var sender = senders[i];
 
-                // this sender and following are full task.
+                // sender和后面的都是满任务的
                 if (sender.sending >= maxTask)
                 {
                     break;
@@ -46,7 +46,8 @@ namespace SQQ
                     team_id = task.team_id,
                     num = task.num,
                     open_id = sender.open_id,
-                    name = sender.name
+                    name = sender.name,
+                    floor = task.floor
                 });
             }
             /* -------------- */
@@ -61,6 +62,7 @@ namespace SQQ
         public int num;
         public string open_id;
         public string name;
+        public string floor;
     }
 
     public class Sender
@@ -71,28 +73,28 @@ namespace SQQ
             open_id = string.Empty;
             sent = 0;
             sending = 0;
-            sendCost = 9999.99;
+            timeSpent = 0;
         }
         /// <summary>
-        /// The name of this sender.
+        /// 姓名
         /// </summary>
         public string name { get; set; }
         /// <summary>
-        /// The OPENID of this sender's WeChat.
+        /// 微信OPENID
         /// </summary>
         public string open_id { get; set; }
         /// <summary>
-        /// The number of qq this sender has sent.
+        /// 已配送气球数
         /// </summary>
         public int sent { get; set; }
         /// <summary>
-        /// The number of qq this sender is sending.
+        /// 正在配送气球数
         /// </summary>
         public int sending { get; set; }
         /// <summary>
-        /// Second this sender cost.
+        /// 配送花费的总时间
         /// </summary>
-        public double sendCost { get; set; }
+        public double timeSpent { get; set; }
     }
 
     public class ProblemSolved : IEqualityComparer<ProblemSolved>
@@ -102,24 +104,34 @@ namespace SQQ
             team_id = string.Empty;
             num = -1;
             sender = null;
-            time = DateTime.Now;
+            timeStart = DateTime.Now;
+            timeSent = DateTime.Now;
+            floor = string.Empty;
         }
         /// <summary>
-        /// The ID of team which solved this problem.
+        /// 队伍ID
         /// </summary>
         public string team_id { get; set; }
         /// <summary>
-        /// The position of this problem in contest. Start with 0.
+        /// 题目ID
         /// </summary>
         public int num { get; set; }
         /// <summary>
-        /// The sender' OPENID of this problem and team.
+        /// 配送员微信OPENID
         /// </summary>
         public string sender { get; set; }
         /// <summary>
-        /// The time of reportback.
+        /// 任务分配时间
         /// </summary>
-        public DateTime time { get; set; }
+        public DateTime timeStart { get; set; }
+        /// <summary>
+        /// 任务完成时间
+        /// </summary>
+        public DateTime timeSent { get; set; }
+        /// <summary>
+        /// 气球要配送到的楼层/考场
+        /// </summary>
+        public string floor { get; set; }
 
         public bool Equals(ProblemSolved x, ProblemSolved y)
         {

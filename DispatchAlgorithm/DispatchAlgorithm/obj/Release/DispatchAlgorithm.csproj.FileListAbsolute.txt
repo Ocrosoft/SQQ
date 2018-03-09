@@ -1,0 +1,5 @@
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\bin\Release\DispatchAlgorithm.dll
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\bin\Release\DispatchAlgorithm.pdb
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Release\DispatchAlgorithm.csproj.CoreCompileInputs.cache
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Release\DispatchAlgorithm.dll
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Release\DispatchAlgorithm.pdb

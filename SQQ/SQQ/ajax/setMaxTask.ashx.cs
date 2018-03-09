@@ -25,6 +25,7 @@ namespace SQQ
             }
 
             Sys.MaxTask = mtask;
+            Sys.SaveSettings();
             Sys.Log("设置最大同时配送数量为 " + mtask);
             context.Response.Write(JsonConvert.SerializeObject(new Ret() { code = "ok" }));
         }

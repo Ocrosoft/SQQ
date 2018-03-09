@@ -27,7 +27,7 @@ namespace SQQ
             var forwardTime = DateTime.Now.AddMinutes(-10);
             foreach(var task in tasks)
             {
-                if(task.time<=forwardTime)
+                if(task.timeSent<=forwardTime)
                 {
                     try
                     {

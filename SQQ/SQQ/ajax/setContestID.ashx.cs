@@ -18,6 +18,7 @@ namespace SQQ
                 return;
             }
             Sys.ContestID = int.Parse(cid);
+            Sys.SaveSettings();
             Sys.Log("设置比赛ID：" + cid);
             context.Response.Write(JsonConvert.SerializeObject(new getContestID.Ret() { contest_id = Sys.ContestID }));
         }

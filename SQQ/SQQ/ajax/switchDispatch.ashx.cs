@@ -12,6 +12,7 @@ namespace SQQ
         {
             context.Response.ContentType = "application/json";
             Sys.DispatchEnabled = !Sys.DispatchEnabled;
+            Sys.SaveSettings();
             Sys.Dispatching = false;
             Sys.Log((Sys.DispatchEnabled ? "开启" : "关闭") + "了任务分配");
             context.Response.Write(JsonConvert.SerializeObject(new getDispatch.Status() { status = Sys.DispatchEnabled }));

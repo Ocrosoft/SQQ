@@ -13,6 +13,7 @@ namespace SQQ
         {
             context.Response.ContentType = "application/json";
             Sys.SignEnabled = !Sys.SignEnabled;
+            Sys.SaveSettings();
             Sys.Log((Sys.SignEnabled ? "开启" : "关闭") + "了配送人员登记");
             context.Response.Write(JsonConvert.SerializeObject(new getDispatch.Status() { status = Sys.SignEnabled }));
         }

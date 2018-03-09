@@ -20,7 +20,7 @@ namespace SQQ
             var team_id = context.Request.Form["tid"];
             Object num = context.Request.Form["num"];
             var open_id = context.Request.Form["oid"];
-            // Check parameters.
+            // 参数检查
             if (team_id == null || num == null || open_id == null) 
             {
                 Sys.Log("confirmTask.ashx: 非正常访问(参数不正确).");
@@ -82,12 +82,11 @@ namespace SQQ
             try
             {
                 var problemSending = Database.GetProblemSending(team_id, (int)num);
-                if (Database.AddProblemSent(team_id, (int)num, open_id))
+                if (Database.AddProblemSent(team_id, (int)num, open_id, problemSending.timeStart))
                 {
                     if (Database.DeleteProblemSending(team_id, (int)num)) // 成功
                     {
-                        double rate = (DateTime.Now - problemSending.time).TotalSeconds;
-                        Database.UpdateSendRate(rate, open_id);
+                        sender.timeSpent += (DateTime.Now - problemSending.timeSent).TotalSeconds;
                         ret.code = "ok";
                         ret.info = DateTime.Now.ToString("HH:mm:ss");
                         Sys.Log(team_id + " " + (char)((int)num + 'A') + "题 已经由 " + sender.name + " 配送完成");

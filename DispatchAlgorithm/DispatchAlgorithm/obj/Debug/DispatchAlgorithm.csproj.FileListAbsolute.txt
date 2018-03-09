@@ -4,3 +4,9 @@ C:\Users\qazws\source\repos\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\Dispat
 C:\Users\qazws\source\repos\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.csproj.CoreCompileInputs.cache
 C:\Users\qazws\source\repos\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.dll
 C:\Users\qazws\source\repos\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.pdb
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\bin\Debug\DispatchAlgorithm.dll
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\bin\Debug\DispatchAlgorithm.pdb
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.csprojResolveAssemblyReference.cache
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.csproj.CoreCompileInputs.cache
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.dll
+C:\Users\qazws\source\repos\SQQ\DispatchAlgorithm\DispatchAlgorithm\obj\Debug\DispatchAlgorithm.pdb

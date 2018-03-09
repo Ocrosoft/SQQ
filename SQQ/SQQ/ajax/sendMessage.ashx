@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="sendMessage.ashx.cs" Class="SQQ.ajax.sendMessage" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="sendMessage.ashx.cs" Class="SQQ.sendMessage" %>

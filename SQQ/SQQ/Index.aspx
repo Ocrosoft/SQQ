@@ -9,7 +9,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <title>SQQ Basic</title>
+    <title>SQQ Pro</title>
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -77,8 +77,8 @@
                         <div class="card" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); color: rgba(0, 0, 0, 0.870588); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; border-radius: 2px;">
                             <section class="front">
                                 <div class="icon icon-subscription" style="height: 30px;"></div>
-                                <div><span class="value"></span><span class="unit">SQQ Basic</span></div>
-                                <span class="description">SQQ 基础版
+                                <div><span class="value"></span><span class="unit">SQQ Pro</span></div>
+                                <span class="description">SQQ 专业版
                                 </span><span>-</span><span class="link">
                                     设置
                                 </span>
@@ -91,7 +91,10 @@
                                     <a href="javascript:;" style="color: red;" id="initation">初始化</a>
                                 </p>
                                 <p style="text-align: center; width: 100%;">
-                                    <a href="javascript:;" style="color: dodgerblue;" id="disableLog">关闭日志</a>
+                                    <a href="SetColor.aspx" target="_blank" style="color: dodgerblue;">气球设置</a>
+                                </p>
+                                <p style="text-align: center; width: 100%;">
+                                    <a href="SetFloor.aspx" target="_blank" style="color: dodgerblue;" id="setFloor">赛场设置</a>
                                 </p>
                                 <p style="text-align: center; width: 100%;">
                                     <a href="javascript:;" style="color: green;" id="setContest">设置比赛</a>
@@ -115,7 +118,6 @@
         var signButton = $('#startSign'); // 登记开关
         var signStatus = $('#signStatus'); // 登记状态
         var initButton = $('#initation'); // 初始化按钮
-        var disableLogButton = $('#disableLog'); // 日志开关
         var logArea = $('#log'); // 日志
         var contestButton = $('#setContest'); // 设置比赛按钮
         var timerGetNewSolvedProblems; // 全局计时器
@@ -278,16 +280,6 @@
                 }
             });
         })
-        // 日志开关事件
-        disableLogButton.click(function () {
-            logArea.parent().slideToggle('fast', function () {
-                if (disableLogButton.text().indexOf('关闭') != -1) {
-                    disableLogButton.text('开启日志');
-                } else {
-                    disableLogButton.text('关闭日志');
-                }
-            });
-        });
         // 初始化事件
         initButton.click(function () {
             var ans = prompt('初始化会删除所有数据，只需要在赛前准备执行。输入yes开始初始化。');

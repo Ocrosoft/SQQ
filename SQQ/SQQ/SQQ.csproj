@@ -103,6 +103,10 @@
     <Content Include="ajax\switchDispatch.ashx" />
     <Content Include="ajax\switchSign.ashx" />
     <Content Include="ajax\sendMessage.ashx" />
+    <Content Include="ajax\changeFloor.ashx" />
+    <Content Include="ajax\getFloor.ashx" />
+    <Content Include="ajax\changeColor.ashx" />
+    <Content Include="ajax\getColor.ashx" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
@@ -125,6 +129,8 @@
     <Content Include="Newtonsoft.Json.dll" />
     <Content Include="ReportBack.aspx" />
     <Content Include="SendMessage.aspx" />
+    <Content Include="SetColor.aspx" />
+    <Content Include="SetFloor.aspx" />
     <Content Include="ShowSender.aspx" />
     <Content Include="ShowSent.aspx" />
     <Content Include="Web.config">
@@ -132,6 +138,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ajax\changeColor.ashx.cs">
+      <DependentUpon>changeColor.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\changeFloor.ashx.cs">
+      <DependentUpon>changeFloor.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ajax\checkTasks.ashx.cs">
       <DependentUpon>checkTasks.ashx</DependentUpon>
     </Compile>
@@ -144,11 +156,17 @@
     <Compile Include="ajax\dispatch.ashx.cs">
       <DependentUpon>dispatch.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ajax\getColor.ashx.cs">
+      <DependentUpon>getColor.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ajax\getContestID.ashx.cs">
       <DependentUpon>getContestID.ashx</DependentUpon>
     </Compile>
     <Compile Include="ajax\getDispatch.ashx.cs">
       <DependentUpon>getDispatch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\getFloor.ashx.cs">
+      <DependentUpon>getFloor.ashx</DependentUpon>
     </Compile>
     <Compile Include="ajax\getLogs.ashx.cs">
       <DependentUpon>getLogs.ashx</DependentUpon>
@@ -210,6 +228,20 @@
     </Compile>
     <Compile Include="SendMessage.aspx.designer.cs">
       <DependentUpon>SendMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SetColor.aspx.cs">
+      <DependentUpon>SetColor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SetColor.aspx.designer.cs">
+      <DependentUpon>SetColor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SetFloor.aspx.cs">
+      <DependentUpon>SetFloor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SetFloor.aspx.designer.cs">
+      <DependentUpon>SetFloor.aspx</DependentUpon>
     </Compile>
     <Compile Include="ShellDispatch.cs" />
     <Compile Include="Index.aspx.cs">
