@@ -32,7 +32,7 @@ namespace SQQ
             }
 
             Sys.ProcessingProblems = true; // 表示正在处理
-            var json = GetUrltoHtml("http://.../JudgeOnline/contestsolved_ajax.php?cid=" + Sys.ContestID);
+            var json = GetUrltoHtml("http://172.21.2.10/JudgeOnline/contestsolved_ajax.php?cid=" + Sys.ContestID);
             json = json.Replace("[\"", "[\"team_id\":\"").Replace(",\"", ",\"num\":\"").Replace("[\"", "{\"").Replace("\"]", "\"}");
             var tmp = JsonConvert.DeserializeObject<List<Tmp>>(json);
             List<Database.ProblemSolved> problems = new List<Database.ProblemSolved>();

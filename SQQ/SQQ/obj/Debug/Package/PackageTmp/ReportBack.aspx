@@ -40,8 +40,9 @@
                 <thead>
                     <tr align="center" class='toprow'>
                         <td width='20%'>姓名</td>
-                        <td width='50%'>队伍ID - 题目序号</td>
-                        <td width='30%'>操作</td>
+                        <td width='40%'>队伍 - 题目 - 颜色</td>
+                        <td width="15%">考场</td>
+                        <td width='25%'>操作</td>
                     </tr>
                 </thead>
                 <tbody runat="server" id="tbody"></tbody>
@@ -124,7 +125,8 @@
                             newFirstRow.addClass('evenrow');
                         }
                         newFirstRow.append('<td>' + result.name + '</td>');
-                        newFirstRow.append('<td>' + value.team_id + ' - ' + String.fromCharCode(parseInt(value.num) + 'A'.charCodeAt(0)) + '</td>');
+                        newFirstRow.append('<td>' + value.team_id + ' - ' + String.fromCharCode(parseInt(value.num) + 'A'.charCodeAt(0)) + ' - ' + value.color + '</td>');
+                        newFirstRow.append('<td>' + value.floor + '</td>');
                         newFirstRow.append('<td><input type="button" class="form-control" value="完成" data-detail="' + dataDetail + '"></td>');
                         bindClick($('[data-detail=' + dataDetail + ']'));
                     });

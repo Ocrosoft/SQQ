@@ -22,3 +22,4 @@ C:\Users\qazws\source\repos\SQQ\SQQ\SQQ\obj\Debug\SQQ.csprojResolveAssemblyRefer
 C:\Users\qazws\source\repos\SQQ\SQQ\SQQ\obj\Debug\SQQ.csproj.CoreCompileInputs.cache
 C:\Users\qazws\source\repos\SQQ\SQQ\SQQ\obj\Debug\SQQ.dll
 C:\Users\qazws\source\repos\SQQ\SQQ\SQQ\obj\Debug\SQQ.pdb
+C:\Users\qazws\source\repos\SQQ\SQQ\SQQ\obj\Debug\SQQ.csproj.CopyComplete

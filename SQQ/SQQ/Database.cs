@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace SQQ
 {
@@ -154,6 +155,18 @@ namespace SQQ
                 {
                     ps.sender = row.ItemArray[2].ToString();
                 }
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null) 
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
                 ret.Add(ps);
             }
 
@@ -172,11 +185,24 @@ namespace SQQ
             var ds = MySQLHelper.ExecuteDataSet(sql);
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                ret.Add(new ProblemSolved()
+                var ps = new ProblemSolved()
                 {
                     team_id = row.ItemArray[0].ToString(),
                     num = int.Parse(row.ItemArray[1].ToString())
-                });
+                };
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null)
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
+                ret.Add(ps);
             }
 
             return ret;
@@ -194,14 +220,27 @@ namespace SQQ
             var ds = MySQLHelper.ExecuteDataSet(sql);
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                ret.Add(new ProblemSolved()
+                var ps = new ProblemSolved()
                 {
                     team_id = row.ItemArray[0].ToString(),
                     num = int.Parse(row.ItemArray[1].ToString()),
                     sender = row.ItemArray[2].ToString(),
                     timeStart = DateTime.Parse(row.ItemArray[3].ToString()),
                     timeSent = DateTime.Parse(row.ItemArray[4].ToString())
-                });
+                };
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null)
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
+                ret.Add(ps);
             }
 
             return ret;
@@ -214,19 +253,32 @@ namespace SQQ
         public static List<ProblemSolved> GetsProblemSent(string open_id)
         {
             List<ProblemSolved> ret = new List<ProblemSolved>();
-            string sql = "SELECT team_id, num, sender, timeStart, timeSent FROM sent WHERE sender = ?open_id ORDER BY time DESC";
+            string sql = "SELECT team_id, num, sender, timeStart, timeSent FROM sent WHERE sender = ?open_id ORDER BY timeSent DESC";
 
             var ds = MySQLHelper.ExecuteDataSet(sql, new MySqlParameter("?open_id", open_id));
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                ret.Add(new ProblemSolved()
+                var ps = new ProblemSolved()
                 {
                     team_id = row.ItemArray[0].ToString(),
                     num = int.Parse(row.ItemArray[1].ToString()),
                     sender = row.ItemArray[2].ToString(),
                     timeStart = DateTime.Parse(row.ItemArray[3].ToString()),
                     timeSent = DateTime.Parse(row.ItemArray[4].ToString())
-                });
+                };
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null)
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
+                ret.Add(ps);
             }
 
             return ret;
@@ -246,7 +298,7 @@ namespace SQQ
 
             var ds = MySQLHelper.ExecuteDataSet(sql, para);
             DataRow row = ds.Tables[0].Rows[0];
-            return new ProblemSolved()
+            var ps = new ProblemSolved()
             {
                 team_id = row.ItemArray[0].ToString(),
                 num = int.Parse(row.ItemArray[1].ToString()),
@@ -254,6 +306,20 @@ namespace SQQ
                 timeStart = DateTime.Parse(row.ItemArray[3].ToString()),
                 timeSent = DateTime.Parse(row.ItemArray[4].ToString())
             };
+            foreach (Floor floor in Sys.floorList)
+            {
+                if (Regex.IsMatch(ps.team_id, floor.teamId))
+                {
+                    ps.floor = floor.floor;
+                    break;
+                }
+            }
+            if (Sys.colorMap[ps.num] != null)
+            {
+                ps.color = (string)Sys.colorMap[ps.num];
+            }
+
+            return ps;
         }
         /// <summary>
         /// 获取所有正在配送气球的题目
@@ -268,13 +334,27 @@ namespace SQQ
             var ds = MySQLHelper.ExecuteDataSet(sql);
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                ret.Add(new ProblemSolved()
+                var ps = new ProblemSolved()
                 {
                     team_id = row.ItemArray[0].ToString(),
                     num = int.Parse(row.ItemArray[1].ToString()),
                     sender = row.ItemArray[2].ToString(),
                     timeStart = DateTime.Parse(row.ItemArray[3].ToString())
-                });
+                };
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null)
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
+
+                ret.Add(ps);
             }
 
             return ret;
@@ -296,7 +376,7 @@ namespace SQQ
                 {
 
                 }
-                ret.Add(new ProblemSolved()
+                var ps = new ProblemSolved()
                 {
                     team_id = row.ItemArray[0].ToString(),
                     num = int.Parse(row.ItemArray[1].ToString()),
@@ -304,7 +384,20 @@ namespace SQQ
                     timeStart = DateTime.Parse(row.ItemArray[3].ToString()),
                     color = "",
                     floor = ""
-                });
+                };
+                foreach (Floor floor in Sys.floorList)
+                {
+                    if (Regex.IsMatch(ps.team_id, floor.teamId))
+                    {
+                        ps.floor = floor.floor;
+                        break;
+                    }
+                }
+                if (Sys.colorMap[ps.num] != null)
+                {
+                    ps.color = (string)Sys.colorMap[ps.num];
+                }
+                ret.Add(ps);
             }
 
             return ret;
@@ -324,13 +417,27 @@ namespace SQQ
 
             var ds = MySQLHelper.ExecuteDataSet(sql, para);
             DataRow row = ds.Tables[0].Rows[0];
-            return new ProblemSolved()
+            var ps =  new ProblemSolved()
             {
                 team_id = row.ItemArray[0].ToString(),
                 num = int.Parse(row.ItemArray[1].ToString()),
                 sender = row.ItemArray[2].ToString(),
                 timeStart = DateTime.Parse(row.ItemArray[3].ToString())
             };
+            foreach (Floor floor in Sys.floorList)
+            {
+                if (Regex.IsMatch(ps.team_id, floor.teamId))
+                {
+                    ps.floor = floor.floor;
+                    break;
+                }
+            }
+            if (Sys.colorMap[ps.num] != null)
+            {
+                ps.color = (string)Sys.colorMap[ps.num];
+            }
+
+            return ps;
         }
         /// <summary>
         /// 添加一条待配送记录

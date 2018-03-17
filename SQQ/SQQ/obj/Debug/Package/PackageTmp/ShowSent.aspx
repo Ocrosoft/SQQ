@@ -23,8 +23,9 @@
             <table id='problemset' class='table table-striped' width='90%'>
                 <thead>
                     <tr align="center" class='toprow'>
-                        <td width='20%'>姓名</td>
-                        <td width='40%'>队伍ID - 题目序号</td>
+                        <td width='15%'>姓名</td>
+                        <td width='25%'>队伍 - 题目 - 颜色</td>
+                        <td width="20%">分配时间</td>
                         <td width='20%'>派送时间</td>
                         <td width="20%">操作</td>
                     </tr>
@@ -46,8 +47,9 @@
                     $.each(response, function (index, item) {
                         var tr = $('<tr></tr>').addClass(index % 2 ? 'evenrow' : 'oddrow').attr('align', 'center');
                         tr.append($('<td>' + item.sender + '</td>'));
-                        tr.append($('<td>' + item.team_id + ' - ' + String.fromCharCode(parseInt(item.num) + 'A'.charCodeAt(0)) + '</td>'));
-                        tr.append($('<td>' + item.time.toString().replace('T', ' ') + '</td>'));
+                        tr.append($('<td>' + item.team_id + ' - ' + String.fromCharCode(parseInt(item.num) + 'A'.charCodeAt(0)) + ' - ' + item.color + '</td>'));
+                        tr.append('<td>' + item.timeStart.toString().replace('T', ' ') + '</td>');
+                        tr.append($('<td>' + item.timeSent.toString().replace('T', ' ') + '</td>'));
                         tr.append($('<td><input type="button" value="重派" class="resend form-control" /></td>'));
                         tr.find('input').attr('data-detail', item.team_id + '#' + item.num);
                         tb.append(tr);

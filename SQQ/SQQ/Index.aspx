@@ -69,7 +69,7 @@
                             </section>
                             <section class="back">
                                 <header><span>已登记 <span id="signedCountIn">0</span> 个派送人员</span></header>
-                                <p>关注公众号回复“ilovezufe 姓名”登记。注意回复内容不包含引号，中间有一个空格。</p>
+                                <p>关注公众号回复“sqq 姓名”登记。注意回复内容不包含引号，中间有一个空格。</p>
                                 <strong><a href="javascript:;" style="color: dodgerblue" id="startSign">开启</a></strong>
                                 <strong><a target="_blank" href="ShowSender.aspx" style="color: green">人员管理</a></strong>
                             </section>

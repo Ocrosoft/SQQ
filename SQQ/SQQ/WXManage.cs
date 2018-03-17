@@ -76,7 +76,7 @@ namespace SQQ
             return access_token;
         }
         /// <summary>
-        /// 后去jsapi_ticket，每次调用接口都调用此函数，不要记录
+        /// 获取jsapi_ticket，每次调用接口都调用此函数，不要记录
         /// </summary>
         /// <returns></returns>
         public static string GetJsapiTicket()

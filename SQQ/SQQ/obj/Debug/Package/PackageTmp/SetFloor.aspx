@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SetColor.aspx.cs" Inherits="SQQ.SetColor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SetFloor.aspx.cs" Inherits="SQQ.SetFloor" %>
 
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <title>气球颜色配置</title>
+    <title>添加考场</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/local.css">
@@ -23,21 +23,21 @@
             <table id='problemset' class='table table-striped' width='90%'>
                 <thead>
                     <tr align="center" class='toprow'>
-                        <td width='40%'>题目ID</td>
-                        <td width='40%'>气球颜色</td>
+                        <td width='40%'>队伍ID(支持正则)</td>
+                        <td width='40%'>所在考场(楼层)</td>
                         <td width="20%">操作</td>
                     </tr>
                 </thead>
-                <tbody runat="server" id="tbody">
+                <tbody>
                     <tr align="center">
                         <td>
-                            <input name="num" class="form-control" type="text">
+                            <input name="teamId" class="form-control" type="text">
                         </td>
                         <td id="td_floor">
-                            <input name="color" class="form-control" type="text">
+                            <input name="floor" class="form-control" type="text">
                         </td>
                         <td>
-                            <input type="submit" value="添加" class="form-control addColor">
+                            <input type="submit" value="添加" class="form-control addFloor">
                         </td>
                     </tr>
                 </tbody>
@@ -48,28 +48,28 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
         function addClick() {
-            var num = $(this).parent().parent().find('input[name="num"]').val();
-            var color = $(this).parent().parent().find('input[name="color"]').val();
-            if (!num) {
-                num = $(this).parent().parent().find('td')[0].innerText;
-                color = $(this).parent().parent().find('td')[1].innerText;
+            var team_id = $(this).parent().parent().find('input[name="teamId"]').val();
+            var floor = $(this).parent().parent().find('input[name="floor"]').val();
+            if (!team_id) {
+                team_id = $(this).parent().parent().find('td')[0].innerText;
+                floor = $(this).parent().parent().find('td')[1].innerText;
             }
             if ($(this).val() == '删除') {
-                $.post("ajax/changeColor.ashx", { "num": num, "color": color, "op": 1 }, function (result) {
+                $.post("ajax/changeFloor.ashx", { "teamId": team_id, "floor": floor, "op": 1 }, function (result) {
                     location.href = location.href;
                 });
                 return;
             }
-            $.post("ajax/changeColor.ashx", { "num": num, "color": color, "op": 0 }, function (result) {
+            $.post("ajax/changeFloor.ashx", { "teamId": team_id, "floor": floor, "op": 0 }, function (result) {
                 if (result.code == "ok") {
                     var clone = $('tbody').children().last().clone();
                     clone.find('input').val('');
-                    var input = $('tbody').children().last().find('input[name="num"]');
+                    var input = $('tbody').children().last().find('input[name="teamId"]');
                     input.replaceWith(input.val());
-                    input = $('tbody').children().last().find('input[name="color"]');
+                    input = $('tbody').children().last().find('input[name="floor"]');
                     input.replaceWith(input.val());
                     input = $('tbody').children().last().find('input[type="submit"]');
-                    input.removeClass("addColor").addClass("removeColor").val('删除');
+                    input.removeClass("addFloor").addClass("removeFloor").val('删除');
                     clone.addClass($('tbody').children().length % 2 ? 'evenrow' : 'oddrow');
                     clone.find('input[type="submit"]').val('添加').bind('click', addClick);
                     $('tbody').append(clone);
@@ -78,19 +78,19 @@
         }
 
         $.ajax({
-            url: 'ajax/getColor.ashx', success: function (response) {
+            url: 'ajax/getFloor.ashx', success: function (response) {
                 var tb = $('tbody');
                 var clone = tb.children().first().clone();
                 tb.empty();
                 $.each(response, function (index, item) {
                     var tr = $('<tr></tr>').addClass(index % 2 ? 'evenrow' : 'oddrow').attr('align', 'center');
-                    tr.append($('<td>' + String.fromCharCode(parseInt(item.num) + 'A'.charCodeAt(0)) + '</td>'));
-                    tr.append($('<td>' + item.color + '</td>'));
-                    tr.append($('<td><input type="submit" value="删除" class="form-control addColor"></td>'));
+                    tr.append($('<td>' + item.teamId + '</td>'));
+                    tr.append($('<td>' + item.floor + '</td>'));
+                    tr.append($('<td><input type="submit" value="删除" class="form-control addFloor"></td>'));
                     tb.append(tr);
                 });
                 tb.append(clone);
-                $('.addColor').bind('click', addClick);
+                $('.addFloor').bind('click', addClick);
             }
         });
     </script>

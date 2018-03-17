@@ -19,7 +19,8 @@ namespace SQQ
                 {
                     tbody.InnerHtml += "<tr align=\"center\" class=\"" + (rowIndex++ % 2 == 0 ? "evenrow" : "oddrow") + "\">";
                     tbody.InnerHtml += "<td>" + taskSender.name + "</td>";
-                    tbody.InnerHtml += "<td>" + tasks[i].team_id + " - " + (char)(tasks[i].num + 'A') + "</td>";
+                    tbody.InnerHtml += "<td>" + tasks[i].team_id + " - " + (char)(tasks[i].num + 'A') + " - " + tasks[i].color + "</td>";
+                    tbody.InnerHtml += "<td>" + tasks[i].floor + "</td>";
                     tbody.InnerHtml += "<td><input type=\"button\" class=\"form-control\" value=\"完成\" data-detail=\"" + tasks[i].team_id + "#" + tasks[i].num + "\"/></td>";
                     tbody.InnerHtml += "</tr>";
                 }
@@ -27,7 +28,8 @@ namespace SQQ
                 {
                     tbody.InnerHtml += "<tr align=\"center\" class=\"" + (rowIndex++ % 2 == 0 ? "evenrow" : "oddrow") + "\">";
                     tbody.InnerHtml += "<td>" + taskSender.name + "</td>";
-                    tbody.InnerHtml += "<td>" + sents[i].team_id + " - " + (char)(sents[i].num + 'A') + "</td>";
+                    tbody.InnerHtml += "<td>" + sents[i].team_id + " - " + (char)(sents[i].num + 'A') + " - " + tasks[i].color + "</td>";
+                    tbody.InnerHtml += "<td>" + tasks[i].floor + "</td>";
                     tbody.InnerHtml += "<td>" + sents[i].timeSent.ToString("HH:mm:ss") + "</td>";
                     tbody.InnerHtml += "</tr>";
                 }

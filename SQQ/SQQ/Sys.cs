@@ -22,7 +22,7 @@ namespace SQQ
             var colorList = Database.GetsColor();
             foreach(var color in colorList)
             {
-                colorMap.Add("")
+                colorMap.Add(color.num, color.color);
             }
         }
         public static void Reset()
